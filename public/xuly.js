@@ -37,14 +37,34 @@ class KienLe extends React.Component {
         )
     }
 };
-
+class InputTag extends React.Component {
+    show = () => {
+        var text = this.refs.s1.value;
+        alert(text);
+    }
+        render() {
+            return (
+                <div>
+                    <select ref = "s1">
+                        <option value = "a">AAA</option>
+                        <option value = "b">BBB</option>
+                        <option value = "c">CCC</option>
+                    </select>
+                    <input type = "text" ref = "txt" />
+                    <button onClick = {this.show}>Click here</button>
+                </div>
+            )
+        }
+}
 ReactDOM.render(
     <div>
+         <InputTag />
         <h1 className="mauvang"> Khoa Pham </h1>
         <KhoaPham ten="JS" hocvien="Mr Kien">Cuộc sống bon chen that</KhoaPham>
         <KhoaPham ten="HTML" hocvien="Mr Kien">Cuộc sống bon chen qua</KhoaPham>
 
         <KhoaPham ten="NODEJS" hocvien="Mr Kien">Cuộc sống bon chen</KhoaPham>
+       
     </div>
     , document.getElementById("root")
 );
