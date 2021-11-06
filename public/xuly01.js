@@ -50,10 +50,24 @@ class Interval extends React.Component {
         setInterval(this.changeImage, 1000);
     }
 }
+class Note extends React.Component {
+    render() {
+        return(
+            <div>
+              <img class = "newpicture" src = {this.props.src} />
+              <p>{this.props.children}</p>
+            </div>
+        ) 
+    }
+}
 class List extends React.Component {
     constructor(props) {
         super(props)
-        this.state = { array: ["Hello", "Hi", "KienLe"] };
+        this.state = { array: [
+            {srcHinh: "images/3.jpg", content: "Hello Friend"},
+            {srcHinh: "images/4.jpg", content: "Hi Friend"},
+            {srcHinh: "images/5.jpg", content: "Hello Bro"}  
+        ]};
     }
     add = () => {
         this.state.array.push("ReactJS", "NodeJS");
@@ -65,8 +79,9 @@ class List extends React.Component {
                 <button onClick = {this.add}>Thêm</button>
                 {
                 this.state.array.map(function(everyone, index){
-                    return <h1 key = {index}>{everyone}</h1>
+                    return <Note key = {index} src={everyone.srcHinh}>{everyone.content}</Note>
                 })
+               
                 }
             </div>
         )
@@ -76,10 +91,11 @@ class List extends React.Component {
 
 ReactDOM.render(
     <div>
+        
         <List/>
-        <Interval />
+        {/* <Interval />
         <KienLe />
-        <TungDuong />
+        <TungDuong /> */}
     </div>
     , document.getElementById('newRoot')
 )
